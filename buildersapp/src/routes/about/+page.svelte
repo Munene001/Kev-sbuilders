@@ -1,104 +1,54 @@
 <script>
-    import Icon from '@iconify/svelte';
-
+    import Footer from '$lib/footer.svelte';
+    import Projectfiles from '$lib/projectfiles.svelte';
 </script>
-<div class = "footer">
-    <div class = footer1>KEV'S INTERIORS <br> & BUILDERS</div>
-    <div class = footer2> Engineer Town|kinangop</div>
-    <div class = footer3>We build more than structures; we create spaces that enhance lives. Our commitment lies in delivering exceptional projects that not only meet but exceed our clients’ expectations, enriching their everyday experiences.</div>
-    <div class = footer4> <Icon icon="ic:outline-facebook"/></div>
-    <div class = footer5>
-        <div class = "footer51"><a href="/">Home</a></div>
-        <div class = "footer51"><a href="/services">Services</a></div>
-        <div class = "footer51"><a href="/about">About</a></div>
-        <div class = "footer51"><a href="/contact">Contact</a></div>
-        <div class = "footer51"><a href="/projects">Projects</a></div>
-        <div class = "footer51"><a href="/admin">Admin</a></div>
-        
-    </div>
-    <div class = "footer6">Logos</div>
-    <div class = "footer7">
-       <Icon icon="tabler:copyright" />Kev's interiors and builders<br>
-       kevokiach20@gmail.com|+25457360560
-
-    </div>
-    
+<div class = "services">
+    <div class = "heading">SERVICES</div>
+    <div class = "heading3"><p>From floor plans, project management, furnishings 
+        and everything in between, we offer our clients a 
+        fully-integrated, all-inclusive design and building 
+        experience that is unrivaled by any other</p></div>
 
 </div>
 
+<Projectfiles backgroundcolor= "#ffffff" title = "Gypsum Works" description1= "From smooth, flawless ceilings to intricate wall designs, our gypsum products are the transformative touch your building needs." description2= "Let our expertise in interior craft impress and help your building stand out.
+We don’t just build; we enhance spaces adding value and character to your surroundings." src = ./gypsum1.jpeg src2= ./gypsum2.jpeg/> 
+<Projectfiles  src = landscaping1a.jpeg src2= landscaping1b.jpeg/>
+<Projectfiles backgroundcolor= "#ffffff" title = "Construction(Plumbing,& Tiling)" description1 = "We build more than structures, we craft dreams. We transform blueprints to reality delivering exceptional buildings." description2= "From foundation to finish, our commitment to quality and innovation ensures your vision becomes a stunning reality. Choose us and experience topmost craftmanship without even having to dig that deep in your pockets." src = construction2.jpeg src2 = construction1.jpeg/>
+<Projectfiles  title = "Interior Design" description1 = "With creativity and expertise, we craft interiors that reflect your style and enhance functionality." description2= "From conceptualization to completion, we curate spaces that inspire, impress and elevate your buildings appeal. 
+Call us to help you turn your wildest dreams to reality" src = design1.jpeg src2 = design2.jpeg/>
+<Projectfiles backgroundcolor= "#ffffff" title = "Cabinetry & Millwork" description1 = "With meticulous craftmanship, we design and build custom pieces that blend seamlessly with any interior. " description2= "From sleek modern kitchens to classic libraries our work adds functionality and a touch of luxury to any building that is lucky enough to be made by our experts. 
+Contact us to experience the artistry of our craftmanship." src = cabinetry1.jpeg src2 = cabinetry2.jpeg/>
+
+<Footer/>
 <style>
-    .footer{
-        background-color: #D9D9D9;
-        height: 514px;
+    .services{
+        height: 286px;
         width: 360px;
-        display: flex;
-        flex-direction: column;
-
-        
-    }
-    .footer1{
-        font-size: 24px;
-        font-family: David Libre;
-        margin-top: 20px;
-        margin-left: 20px;
-        color: #000000;
-        font-weight: 400px;
-        line-height: 23.17px;
-    }
-    .footer2{
-        font-size: 10px;
-        font-family: inter;
-        font-weight: 300;
-        margin-top: 3px;
-        margin-left:20px;
-        color:#717171;
-        line-height: 20px;
-
-    }
-    .footer3{
-        margin-left: 20px;
-        margin-top: 10px;
-        font-family: inter;
-        font-weight: 300;
-        font-size: 11px;
-        line-height: 20px;
-        font-weight: 300;
-        color: #2c2c2c;    
-    }
-    .footer4{
-        margin-left: 20px;
-        margin-top: 10px;
-        font-size: 37px;
-    }
-    .footer5{
-        font-family: inter;
-        font-size: 10px;
-        margin-left: 20px;
-        color: #2c2c2c;
+        background-image: url('/background.jpeg');
+        background-size: cover;
         display: flex;
         flex-direction: column;
         
-    }
-    .footer51{
-        margin-top: 5px;
-        color: #2c2c2c;
-
-    }
-    .footer6{
-        margin-top: 100px;
-    }
-    .footer7{
-        font-size: 10px;
-        color:#2c2c2c;
-        display: flex;
-        justify-content: center;
-        margin-top: 15px;
-        text-indent: 20px;
-        font-family: inter;
-        font-weight: 300;
+        
         
     }
+    .heading{
+        letter-spacing: 1.4em;
+        font-size: 22px;
+        font-family: Inter;
+        color: #ffffff;
+        margin-left: 5px;
+        margin-top: 1px;
+        font-weight: 800;
 
-
-
-    </style>
+    }
+    
+    
+    .heading3{
+        margin-top: 30px;
+        margin-left: 30px;
+        font-size: 13px;
+        color: #ffffff;
+    }
+</style>
