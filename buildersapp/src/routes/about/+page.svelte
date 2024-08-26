@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Terra&display=swap" rel="stylesheet">
     <title></title>
 </head>
-<body>
+
 <Header/>
     <div class = "services">
         <div class = "heading">SERVICES</div>
@@ -31,7 +31,7 @@
     Contact us to experience the artistry of our craftmanship." src = cabinetry1.jpeg src2 = cabinetry2.jpeg/>
     
     <Footer/>
-</body>
+
 
 
 <style>
@@ -42,6 +42,7 @@
         background-size: cover;
         display: flex;
         flex-direction: column;
+        box-sizing: border-box;
         
         
         

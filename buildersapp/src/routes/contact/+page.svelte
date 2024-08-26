@@ -15,7 +15,7 @@
     rel="stylesheet"
   />
 </head>
-<body>
+
   <Header/>
   <div class="contact">
     <div class="uno">CONTACT</div>
@@ -69,13 +69,14 @@
     </div>
   </div>
   <Footer />
-</body>
+
 
 <style>
   .contact {
     width: 360px;
     height: 1135px;
     background-color: #b2ac88;
+    box-sizing: border-box;
   }
   .uno {
     font-family: "Lexend Terra", sans-serif;
@@ -169,4 +170,5 @@
     padding: 5px;
     border-radius: 4px;
   }
+ 
 </style>

@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Terra&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=David+Libre:wght@400;700&display=swap" rel="stylesheet">
     
   </head>
-  <body>
     <div class="footer">
       <div class="footer1">KEV'S INTERIORS <br /> & BUILDERS</div>
       <div class="footer2">Engineer Town|kinangop</div>
@@ -40,7 +40,7 @@
       </div>
     </div>
     
-  </body>
+  
   </html>
  
   
@@ -51,10 +51,12 @@
       width: 360px;
       display: flex;
       flex-direction: column;
+      box-sizing: border-box;
+      
     }
     .footer1 {
-      font-size: 24px;
-      font-family: David Libre;
+      font-size: 28px;
+      font-family: 'David Libre', serif;
       margin-top: 20px;
       margin-left: 20px;
       color: #000000;
@@ -115,5 +117,6 @@
       font-family: 'inter';
       font-weight: 300;
     }
+    
   </style>
   

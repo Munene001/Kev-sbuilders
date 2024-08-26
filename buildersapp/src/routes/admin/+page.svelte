@@ -1,0 +1,91 @@
+<script>
+  import { auth } from "$lib/firebase";
+  import { signInWithEmailAndPassword } from "firebase/auth";
+  import { goto } from "$app/navigation";
+
+  let email = "";
+  let password = "";
+
+  const adminEmail = "lawrencemunenex@gmail.com";
+  const adminPassword = "gypsumworks.";
+
+  const login = async () => {
+    try {
+      if (email === adminEmail && password === adminPassword) {
+        const userCredentila = await signInWithEmailAndPassword(
+          auth,
+          email,
+          password
+        );
+        console.log("admin signed in:", userCredentila.user);
+        goto("/configure");
+      } else {
+        alert("invalid credentials. Only the admin can aceess this page");
+      }
+    } catch (error) {
+        if (error instanceof Error) {
+        console.error("Error signing in:", error.message);
+        alert("Login failed: " + error.message);
+      } else {
+        console.error("Unknown error:", error);
+        alert("Login failed: An unknown error occurred.");
+      }
+    }
+  };
+</script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Terra&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=David+Libre:wght@400;700&display=swap" rel="stylesheet">
+  
+    
+  </head>
+<div class = "admin">
+    <div class=" heading"><h1>Admin</h1></div>
+
+<form on:submit|preventDefault={login}>
+  <input type="email" bind:value={email} placeholder="Admin Email" required />
+  <input
+    type="password"
+    bind:value={password}
+    placeholder="Admin Password"
+    required
+  />
+  <br>
+  <button type="submit">Login</button>
+</form>
+</div>
+<style>
+    .admin{
+        width: 360px;
+        height: 100vh;
+        background-color: blanchedalmond;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .heading{
+        font-family: "Lexend Terra", sans-serif;
+    }
+    
+  input[type="email"],
+  input[type="password"],
+  button[type = "submit"]
+  {
+    width: 80%;
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-left: 30px;
+    box-sizing: border-box;
+    font-family: "";
+    
+
+  }
+</style>
