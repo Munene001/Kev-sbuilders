@@ -4,6 +4,9 @@ import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
 
+
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyBca9UCaHP6oKKpNDfbWBKZLN8sfShSK9I",
     authDomain: "kev-s-interiors-and-builders.firebaseapp.com",
@@ -62,32 +65,4 @@ async function uploadImage(file, path) {
     }
 }
 
-/**
- * Fetches all projects from Firestore.
- * @returns {Promise<Array<Object>>} - A list of projects.
- */
-async function fetchProjects() {
-    try {
-        const querySnapshot = await getDocs(collection(db, 'project'));
-        return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    } catch (error) {
-        console.error('Error fetching projects:', error);
-        return [];
-    }
-}
-
-/**
- * Fetches all team members from Firestore.
- * @returns {Promise<Array<Object>>} - A list of team members.
- */
-async function fetchTeamMembers() {
-    try {
-        const querySnapshot = await getDocs(collection(db, 'team'));
-        return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    } catch (error) {
-        console.error('Error fetching team members:', error);
-        return [];
-    }
-}
-
-export { auth, db, storage, addProject, addTeamMember, uploadImage, fetchProjects, fetchTeamMembers };
+export { auth, db, storage, addProject, addTeamMember, uploadImage,};
