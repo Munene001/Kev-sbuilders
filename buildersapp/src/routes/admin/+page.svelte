@@ -2,6 +2,8 @@
   import { auth } from "$lib/firebase";
   import { signInWithEmailAndPassword } from "firebase/auth";
   import { goto } from "$app/navigation";
+  import Header from "$lib/header.svelte";
+  import Footer from "$lib/footer.svelte";
 
   let email = "";
   let password = "";
@@ -42,8 +44,9 @@
   
     
   </head>
+  <Header/>
 <div class = "admin">
-    <div class=" heading"><h1>Admin</h1></div>
+    <div class=" heading">Admin</div>
 
 <form on:submit|preventDefault={login}>
   <input type="email" bind:value={email} placeholder="Admin Email" required />
@@ -57,11 +60,12 @@
   <button type="submit">Login</button>
 </form>
 </div>
+<Footer/>
 <style>
     .admin{
         width: 360px;
-        height: 100vh;
-        background-color: blanchedalmond;
+        height: 160vh;
+        background-color:azure;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -69,6 +73,12 @@
     }
     .heading{
         font-family: "Lexend Terra", sans-serif;
+        font-size: 30px;
+        font-weight: 400;
+        margin-top: 2px;
+        margin-bottom: 36px;
+        letter-spacing: 0.8em;
+
     }
     
   input[type="email"],

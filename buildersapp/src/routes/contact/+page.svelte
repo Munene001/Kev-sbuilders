@@ -85,7 +85,8 @@
     font-weight: 400;
     display: flex;
     justify-content: center;
-    margin-top: 8px;
+    margin-top: 1px;
+    
     color: #ffffff;
   }
   .dos {
@@ -169,6 +170,7 @@
   .submit-button{
     padding: 5px;
     border-radius: 4px;
+    
   }
  
 </style>

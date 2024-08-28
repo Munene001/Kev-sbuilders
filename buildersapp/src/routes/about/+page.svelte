@@ -1,68 +1,137 @@
 <script>
-    import Footer from '$lib/footer.svelte';
-    import Projectfiles from '$lib/projectfiles.svelte';
-    import Header from '$lib/header.svelte';
-</script><html lang="en"></html>
+  import Header from "$lib/header.svelte";
+  import Footer from "$lib/footer.svelte";
+  import { db } from "$lib/firebase";
+  import { collection, onSnapshot } from "firebase/firestore";
+
+  /**
+   * @type {string | any[]}
+   */
+  let team = [];
+  /**
+   * @type {string | null}
+   */
+  let error = null;
+
+  function fetchTeam() {
+    const teamCollection = collection(db, "team");
+    onSnapshot(
+      teamCollection,
+      (snapshot) => {
+        team = snapshot.docs.map((doc) => ({id:doc.id, ...doc.data()}));
+      },
+      (err) => {
+        console.error("error fetching team", err);
+        error = "failed to fetch team,";
+      }
+    );
+  }
+  fetchTeam();
+</script>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend+Terra&display=swap" rel="stylesheet">
-    <title></title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lexend+Terra&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=David+Libre:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
 </head>
 
-<Header/>
-    <div class = "services">
-        <div class = "heading">SERVICES</div>
-        <div class = "heading3"><p>From floor plans, project management, furnishings 
-            and everything in between, we offer our clients a 
-            fully-integrated, all-inclusive design and building 
-            experience that is unrivaled by any other</p></div>
-    
+<Header />
+<div class="about">
+  <div class=" head">About</div>
+  <div class="body">
+    <div class="text">
+      We are a team of building experts and professionals dealing with;<br />
+      Construction<br />
+      Remodeling<br />
+      Interior Design<br />
+      Landscaping<br />
+      Building Consultancy<br />
+      Project Management<br />
+      <br />
+      We offer construction services at competitive prices as we strive to ensure
+      each and every person is able to live in a place they can appreciate.
     </div>
-    
-    <Projectfiles backgroundcolor= "#ffffff" title = "Gypsum Works" description1= "From smooth, flawless ceilings to intricate wall designs, our gypsum products are the transformative touch your building needs." description2= "Let our expertise in interior craft impress and help your building stand out.
-    We don’t just build; we enhance spaces adding value and character to your surroundings." src = ./gypsum1.jpeg src2= ./gypsum2.jpeg/> 
-    <Projectfiles  src = landscaping1a.jpeg src2= landscaping1b.jpeg/>
-    <Projectfiles backgroundcolor= "#ffffff" title = "Construction(Plumbing,& Tiling)" description1 = "We build more than structures, we craft dreams. We transform blueprints to reality delivering exceptional buildings." description2= "From foundation to finish, our commitment to quality and innovation ensures your vision becomes a stunning reality. Choose us and experience topmost craftmanship without even having to dig that deep in your pockets." src = construction2.jpeg src2 = construction1.jpeg/>
-    <Projectfiles  title = "Interior Design" description1 = "With creativity and expertise, we craft interiors that reflect your style and enhance functionality." description2= "From conceptualization to completion, we curate spaces that inspire, impress and elevate your buildings appeal. 
-    Call us to help you turn your wildest dreams to reality" src = design1.jpeg src2 = design2.jpeg/>
-    <Projectfiles backgroundcolor= "#ffffff" title = "Cabinetry & Millwork" description1 = "With meticulous craftmanship, we design and build custom pieces that blend seamlessly with any interior. " description2= "From sleek modern kitchens to classic libraries our work adds functionality and a touch of luxury to any building that is lucky enough to be made by our experts. 
-    Contact us to experience the artistry of our craftmanship." src = cabinetry1.jpeg src2 = cabinetry2.jpeg/>
-    
-    <Footer/>
+    <div class="mid">Meet our team</div>
+    <div>
+      {#if team.length > 0}
+        <ul>
+          {#each team as team}
+            <li>
+              <h2>{team.caption}</h2>
+              <p>Status: {team.name}</p>
+              <img
+                src={team.imageUrl}
+                alt={team.caption}
+                style="width: 200px; height: auto;"
+              />
+              <!-- Removed the date display -->
+            </li>
+          {/each}
+        </ul>
+      {:else}
+        <p>No teamMembers available.</p>
+      {/if}
 
-
+      {#if error}
+        <p style="color: red;">{error}</p>
+      {/if}
+    </div>
+  </div>
+</div>
+<Footer />
 
 <style>
-    .services{
-        height: 286px;
-        width: 360px;
-        background-image: url('/services.jpeg');
-        background-size: cover;
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-        
-        
-        
-    }
-    .heading{
-        letter-spacing: 1.4em;
-        font-size: 22px;
-        font-family:'Lexend Terra', sans-serif;
-        color: #ffffff;
-        padding: 9px;
-        margin-top: 1px;
-        font-weight: 400;
-
-    }
-    
-    
-    .heading3{
-        margin-top: 80px;
-        margin-left: 10px;
-        font-size: 13px;
-        color: #ffffff;
-    }
+  .about {
+    width: 360px;
+    height: 1335px;
+    background-image: url("/about.png");
+    box-sizing: border-box;
+    background-size: cover;
+  }
+  .head {
+    font-family: "Lexend Terra", sans-serif;
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    color: #ffffff;
+    letter-spacing: 1em;
+    font-weight: 400;
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    margin-left: 32px;
+    margin-top: 2px;
+    width: 288px;
+    height: 1266px;
+    background-color: hsl(0, 0%, 85%);
+    box-sizing: border-box;
+    display: flex;
+  }
+  .text {
+    font-family: "inter", serif;
+    font-size: 14px;
+    line-height: 15px;
+    padding: 25px;
+  }
+  .mid {
+    width: 288px;
+    height: 24px;
+    background-color: black;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    font-family: "Lexend Terra", serif;
+  }
 </style>

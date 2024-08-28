@@ -1,6 +1,8 @@
 <script>
   import { db } from '$lib/firebase';
   import { collection, onSnapshot } from "firebase/firestore";
+  import Header from "$lib/header.svelte";
+  import Footer from "$lib/footer.svelte"
 
   /**
    * @type {string | any[]}
@@ -25,7 +27,7 @@
   // Call the fetch function when the component is mounted
   fetchProjects();
 </script>
-
+<Header/>
 <h1>Projects</h1>
 {#if projects.length > 0}
   <ul>
@@ -45,3 +47,4 @@
 {#if error}
   <p style="color: red;">{error}</p>
 {/if}
+<Footer/>
