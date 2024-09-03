@@ -34,6 +34,16 @@ async function addProject(project) {
         console.error('Error adding project:', error);
     }
 }
+/**
+ * @param {any} contact
+ */
+async function addContact(contact) {
+    try {
+        await addDoc(collection(db, 'contact'), contact);
+    } catch (error) {
+        console.error('Error adding contact', error);
+    }
+}
 
 /**
  * Adds a team member to Firestore.
@@ -65,4 +75,4 @@ async function uploadImage(file, path) {
     }
 }
 
-export { auth, db, storage, addProject, addTeamMember, uploadImage,};
+export { auth, db, storage, addProject, addTeamMember,addContact, uploadImage,};

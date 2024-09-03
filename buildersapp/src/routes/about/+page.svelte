@@ -65,17 +65,16 @@
     <div class="mid">Meet our team</div>
     <div>
       {#if team.length > 0}
-        <ul>
+        <ul class = "teamlist">
           {#each team as team}
-            <li>
-              <h2>{team.caption}</h2>
-              <p>Status: {team.name}</p>
-              <img
+            <li class="teammember">
+              
+              <div class="image"><img
                 src={team.imageUrl}
                 alt={team.caption}
-                style="width: 200px; height: auto;"
-              />
-              <!-- Removed the date display -->
+              /></div>
+              <div class=" name">Name: {team.name}</div>
+              <div class="caption">{team.caption}<div>
             </li>
           {/each}
         </ul>
@@ -93,45 +92,86 @@
 
 <style>
   .about {
-    width: 360px;
-    height: 1335px;
+    width: 100%;
+    max-width: 100vw;
+    min-height: 1335px;
     background-image: url("/about.png");
     box-sizing: border-box;
     background-size: cover;
+    flex-direction: column;
+    align-items: center;
   }
   .head {
     font-family: "Lexend Terra", sans-serif;
     display: flex;
     justify-content: center;
-    font-size: 24px;
+    font-size: 26px;
     color: #ffffff;
     letter-spacing: 1em;
     font-weight: 400;
   }
   .body {
     display: flex;
+    flex: 1;
     flex-direction: column;
-    margin-left: 32px;
+    margin-left: 35px;
     margin-top: 2px;
     width: 288px;
-    height: 1266px;
+    min-height: 1266px;
     background-color: hsl(0, 0%, 85%);
     box-sizing: border-box;
     display: flex;
   }
   .text {
     font-family: "inter", serif;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 15px;
     padding: 25px;
+    text-align: center;
   }
   .mid {
-    width: 288px;
-    height: 24px;
+    width: 300px;
+    height: 30px;
     background-color: black;
     color: #ffffff;
     display: flex;
     justify-content: center;
     font-family: "Lexend Terra", serif;
+    margin-top: 5px;
   }
+  .teamlist{
+    list-style: none;
+    margin-left: 20px;
+  }
+  .teammember{
+    margin-bottom: 30px;
+    display: flex;
+    display: block;
+    
+  }
+  .image img{
+    width: 167px;
+    height: 167px;
+    border-radius: 50%;
+    object-fit: cover;
+
+  }
+  .name{
+    display: flex;
+    font-size: 17px;
+    margin-bottom: 4px;
+    margin-top: 3px;
+    font-weight: bold;
+    font-family: 'inter', serif;
+
+  }
+  .caption{
+    font-family: 'inter', serif;
+    color: #222;
+    font-size: 15px;
+    
+
+  }
+
+  
 </style>

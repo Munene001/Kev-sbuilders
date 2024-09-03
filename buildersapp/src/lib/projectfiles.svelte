@@ -19,8 +19,9 @@
 <style>
     .projectfiles{
         display: flex;
-        width: 360px;
-        height:760px;
+        width: 100%;
+        max-width:100vw;
+        height:780px;
         flex-direction: column;
         border: 2px;
         background-color:var(--background-color);
@@ -30,7 +31,7 @@
 
     }
     .files1{
-        font-size: 24px;
+        font-size: 26px;
         font-family: inter;
         justify-content: center;
         margin-left: 30px;
@@ -55,8 +56,8 @@
 
     }
     .files3{
-        width: 299px;
-        height: 162px;
+        width: 311px;
+        height: 177px;
         margin-top: 30px;
         margin-left: 30px;
 
@@ -71,8 +72,8 @@
     .files4{
         margin-top: 30px;
         margin-left: 30px;
-        width: 299px;
-        height:162px;
+        width: 311px;
+        height:177px;
         object-fit: cover;
         
 

@@ -3,12 +3,12 @@
   import Header from "$lib/header.svelte";
   import Footer from "$lib/footer.svelte";
   import { db } from "$lib/firebase";
-  import { collection, onSnapshot,deleteDoc,doc } from "firebase/firestore";
-  
+  import { collection, onSnapshot, deleteDoc, doc } from "firebase/firestore";
 
   let projectCaption = "";
   let projectStatus = "pending";
   let projectImage = null;
+  let projectType = "Remodelling";
   let teamCaption = "";
   let teamName = "";
   let teamImage = null;
@@ -16,13 +16,14 @@
 
   let team = [];
   let projects = [];
+  let contact = [];
 
   function fetchTeam() {
     const teamCollection = collection(db, "team");
     onSnapshot(
       teamCollection,
       (snapshot) => {
-        team = snapshot.docs.map((doc) => ({id:doc.id, ...doc.data()}));
+        team = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       },
       (err) => {
         console.error("error fetching team", err);
@@ -30,40 +31,64 @@
       }
     );
   }
+  function fetchContact() {
+    const contactCollection = collection(db, "contact");
+    onSnapshot(
+      contactCollection,
+      (snapshot) => {
+        contact = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      },
+      (err) => {
+        console.error("error fetching contact", err);
+        error = "failed to fetch contact,";
+      }
+    );
+  }
 
   function fetchProjects() {
-    const projectCollection = collection(db, 'project'); // Make sure 'projects' matches your Firestore collection name
-    onSnapshot(projectCollection, (snapshot) => {
-      projects = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    }, (err) => {
-      console.error("Error fetching projects:", err);
-      error = "Failed to fetch projects.";
-    });
+    const projectCollection = collection(db, "project"); // Make sure 'projects' matches your Firestore collection name
+    onSnapshot(
+      projectCollection,
+      (snapshot) => {
+        projects = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      },
+      (err) => {
+        console.error("Error fetching projects:", err);
+        error = "Failed to fetch projects.";
+      }
+    );
   }
   fetchTeam();
   fetchProjects();
+  fetchContact();
 
   async function deleteProject(id) {
-    try{
-      await deleteDoc(doc(db, 'project', id));
+    try {
+      await deleteDoc(doc(db, "project", id));
       alert("Project deleted successfully");
-    } catch(error){
+    } catch (error) {
       console.error("Error deleting project:", error);
       error = "Failed to delete project";
     }
-    
+  }
+  async function deleteContact(id) {
+    try {
+      await deleteDoc(doc(db, "contact", id));
+      alert("Contact deleted successfully");
+    } catch (error) {
+      console.error("Error deleting contact:", error);
+      error = "Failed to delete contact";
+    }
   }
   async function deleteTeamMember(id) {
-    try{
-      await deleteDoc(doc(db, 'team', id));
+    try {
+      await deleteDoc(doc(db, "team", id));
       alert("Team member deleted successfully");
-    } catch(error){
+    } catch (error) {
       console.error("Error deleting TeamMember:", error);
       error = "Failed to delete team memeber";
     }
-    
   }
-
 
   async function handleProjectUpload() {
     if (projectImage) {
@@ -73,6 +98,7 @@
           caption: projectCaption,
           status: projectStatus,
           imageUrl,
+          type: projectType,
         };
         await addProject(project);
         alert("Project uploaded successfully");
@@ -93,7 +119,7 @@
         const teamMember = {
           caption: teamCaption,
           imageUrl,
-          name:teamName,
+          name: teamName,
         };
         await addTeamMember(teamMember);
         alert("Team member uploaded successfully");
@@ -121,6 +147,7 @@
     projectCaption = "";
     projectStatus = "pending";
     projectImage = null;
+    projectType = "Remodelling";
   }
 
   function resetTeamForm() {
@@ -187,6 +214,16 @@
       </label>
     </div>
     <br />
+    <div class="form-group">
+      <label>
+        Type:<br />
+        <select bind:value={projectType}>
+          <option value="Remodelling">Remodelling</option>
+          <option value="General Construction">General Construction</option>
+        </select>
+      </label>
+    </div>
+    <br />
 
     <button class="submit-button" type="submit">Upload Project</button><br />
   </form>
@@ -237,51 +274,104 @@
 
     <button class="submit-button" type="submit">Add Team Member</button>
   </form>
-</div>
-<h3>Projects</h3>
+  <br />
+  <br />
+
+  <div class="title">Projects</div>
   {#if projects.length > 0}
     <ul>
       {#each projects as project}
-        <li>
-          <h2>{project.caption}</h2>
-          <p>Status: {project.status}</p>
-          <img src={project.imageUrl} alt={project.caption} style="width: 200px; height: auto;" />
-          <button on:click={() => deleteProject(project.id)}>Delete Project</button>
+        <li class="list">
+          <div class="pro1" style="background-image: url({project.imageUrl});">
+            <!-- Apply dynamic class for status color -->
+            <div
+              class={project.status === "completed" ? "completed" : "pending"}
+            >
+              <h2>{project.status}</h2>
+            </div>
+            <div class="type">{project.type}</div>
+          </div>
+          <div class="caption1">{project.caption}</div>
+          <br />
+          <button
+            on:click={() => deleteProject(project.id)}
+            class="submit-button">Delete Project</button
+          >
         </li>
       {/each}
     </ul>
   {:else}
     <p>No projects available.</p>
   {/if}
-  <br>
-  <br>
-  <br>
-  <h3>Team Members</h3>
-  {#if team.length > 0}
+
+  {#if error}
+    <p style="color: red;">{error}</p>
+  {/if}
+  <br />
+  <br />
+
+  <div class="title">Team Members</div>
+  <div class="pro1o">
+    {#if team.length > 0}
+      <ul class="teamlist">
+        {#each team as team}
+          <li class="teammember">
+            <div class="image">
+              <img src={team.imageUrl} alt={team.caption} />
+            </div>
+            <div class=" name">Name: {team.name}</div>
+            <div class="caption">
+              {team.caption}
+              <div>
+                <br />
+                <button
+                  on:click={() => deleteTeamMember(team.id)}
+                  class="submit-button">Delete Team Member</button
+                >
+              </div>
+            </div>
+          </li>
+        {/each}
+      </ul>
+    {:else}
+      <p>No teamMembers available.</p>
+    {/if}
+
+    {#if error}
+      <p style="color: red;">{error}</p>
+    {/if}
+  </div>
+  <div class="title2">Contact Feedback</div>
+  {#if contact.length > 0}
     <ul>
-      {#each team as member}
-        <li>
-          <h2>{member.caption}</h2>
-          <p>Name: {member.name}</p>
-          <img src={member.imageUrl} alt={member.caption} style="width: 200px; height: auto;" />
-          <button on:click={() => deleteTeamMember(member.id)}>Delete Team Member</button>
+      {#each contact as contact}
+        <li class="list">
+          <div class="caption1">{contact.firstname} {contact.lastname}</div>
+          <div class="caption1">{contact.email}</div>
+          
+          <div class="caption1">{contact.phonenumber}</div>
+          <div class="caption1"><b>Message: </b>{contact.message}</div>
+          <br />
+          <button
+            on:click={() => deleteContact(contact.id)}
+            class="submit-button">Delete Feedback</button
+          >
         </li>
       {/each}
     </ul>
   {:else}
-    <p>No team members available.</p>
+    <p>No feedback available.</p>
   {/if}
 
   {#if error}
     <p style="color: red;">{error}</p>
   {/if}
-
-
-<Footer />
+</div>
 
 <style>
   .configure {
-    width: 360px;
+    width: 100%;
+    max-width: 100vw;
     background-color: azure;
     box-sizing: border-box;
   }
@@ -292,8 +382,9 @@
     letter-spacing: 0.2em;
     font-weight: 300;
     margin-top: 20px;
-    font-size: 12px;
+    font-size: 14px;
     margin-left: 15px;
+    box-sizing: border-box;
   }
 
   .form-group {
@@ -308,7 +399,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-family: "Inter", sans-serif;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .submit-button {
@@ -325,7 +416,7 @@
     background-color: #0056b3; /* Example hover color, adjust as needed */
   }
   .form-group label {
-    font-size: 16px;
+    font-size: 18px;
     display: block;
     margin-bottom: 4px;
   }
@@ -339,5 +430,97 @@
     margin-bottom: 50px;
     margin-top: 1px;
     letter-spacing: 0.8em;
+  }
+  .teamlist {
+    list-style: none;
+    margin-left: 20px;
+  }
+  .teammember {
+    margin-bottom: 30px;
+    display: flex;
+    display: block;
+  }
+  .image img {
+    width: 167px;
+    height: 167px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .name {
+    display: flex;
+    font-size: 17px;
+    margin-bottom: 4px;
+    margin-top: 3px;
+    font-weight: bold;
+    font-family: "inter", serif;
+  }
+  .caption {
+    font-family: "inter", serif;
+    color: #222;
+    font-size: 15px;
+  }
+  .title {
+    color: black;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    font-size: 22px;
+    margin-left: 20px;
+  }
+  .pro1 {
+    width: 350x;
+    height: 240px;
+    background-size: cover;
+    background-position: center;
+    /* Center the element */
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-right: 38px;
+  }
+
+  .pending {
+    color: red;
+    font-family: "inter", sans-serif;
+
+    margin-top: 170px;
+  }
+
+  .completed {
+    color: green;
+    font-family: "inter", sans-serif;
+    margin-top: 170px;
+  }
+  .type {
+    background-color: white;
+    width: 112px;
+    height: 48px;
+    color: black;
+    font-family: "inter", sans-serif;
+    font-size: 17px;
+  }
+  .caption1 {
+    font-family: "inter", sans-serif;
+    font-size: 17px;
+    margin-top: 8px;
+    margin-right: 7px;
+  }
+  .title2{
+    color: black;
+    font-family: "Inter", sans-serif;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    font-size: 22px;
+    margin-left: 50px
+
   }
 </style>

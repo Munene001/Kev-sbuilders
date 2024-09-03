@@ -8,7 +8,7 @@
   let email = "";
   let password = "";
 
-  const adminEmail = "lawrencemunenex@gmail.com";
+  const adminEmail = "kevokiach20@gmail.com";
   const adminPassword = "gypsumworks.";
 
   const login = async () => {
@@ -22,7 +22,7 @@
         console.log("admin signed in:", userCredentila.user);
         goto("/configure");
       } else {
-        alert("invalid credentials. Only the admin can aceess this page");
+        alert("invalid credentials. Only the admin can access this page");
       }
     } catch (error) {
         if (error instanceof Error) {
@@ -63,8 +63,9 @@
 <Footer/>
 <style>
     .admin{
-        width: 360px;
-        height: 160vh;
+        width: 100%;
+        max-width:100vw;
+        height: 177vh;
         background-color:azure;
         display: flex;
         flex-direction: column;
@@ -73,7 +74,7 @@
     }
     .heading{
         font-family: "Lexend Terra", sans-serif;
-        font-size: 30px;
+        font-size: 32px;
         font-weight: 400;
         margin-top: 2px;
         margin-bottom: 36px;
@@ -90,7 +91,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
     font-family: "Inter", sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     margin-top: 10px;
     margin-left: 30px;
     box-sizing: border-box;

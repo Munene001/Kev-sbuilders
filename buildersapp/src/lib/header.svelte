@@ -67,11 +67,16 @@
 
 
 <style>
+  .body{
+    margin:0;
+    padding:0;
+  }
   .header {
-    width: 360px;
-    height: 105px;
+    width: 100%;
+    max-width:100vw;
+    height: 137px;
     background-color: #d9d9d9;
-    padding: 12px;
+    padding: 15px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -80,18 +85,18 @@
   
   .logo {
     font-weight: bold;
-    font-size: 28px;
+    font-size: 32px;
     font-family: 'David Libre', serif;
   }
   .logo1{
     font-weight: bold;
-    font-size: 28px;
+    font-size: 32px;
     color: white;
     font-family: 'David Libre', serif;
 
   }
   .links{
-    margin-top: 20px;
+    margin-top: 24px;
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -102,6 +107,7 @@
 
   .hidden {
     display: none;
+    
   }
   
     
@@ -110,9 +116,10 @@
     display: flex;
     flex-direction: column;
     background-color: white;
-    width: 360px;
+    width: 100%;
+    max-width:100vw;
     box-sizing: border-box;
-    height: 800vh;
+    height: 860vh;
    
     
     
@@ -120,11 +127,11 @@
   }
   .pages{
     border: #d9d9d9;
-    font-size: 36px;
-    margin-top: 22px;
+    font-size: 40px;
+    margin-top: 26px;
     background-color:white;
     color: black;
-    width: 20px;
+    width: 31px;
     font-family: 'David Libre', serif;
   }
  

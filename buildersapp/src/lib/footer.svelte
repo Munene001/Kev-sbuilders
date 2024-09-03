@@ -36,7 +36,7 @@
       </div>
       <div class="footer7">
         <Icon icon="tabler:copyright" />Kev's interiors and builders<br />
-        kevokiach20@gmail.com|+25457360560
+        kevokiach20@gmail.com|07360560|0720441236
       </div>
     </div>
     
@@ -47,15 +47,16 @@
   <style>
     .footer {
       background-color: #d9d9d9;
-      height: 514px;
-      width: 360px;
+      height: 534px;
+      width: 100%;
+      max-width:100vw;
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
       
     }
     .footer1 {
-      font-size: 28px;
+      font-size: 30px;
       font-family: 'David Libre', serif;
       margin-top: 20px;
       margin-left: 20px;
@@ -64,7 +65,7 @@
       line-height: 23.17px;
     }
     .footer2 {
-      font-size: 10px;
+      font-size: 12px;
       font-family: 'inter';
       font-weight: 300;
       margin-top: 3px;
@@ -77,7 +78,7 @@
       margin-top: 10px;
       font-family: 'inter';
       font-weight: 300;
-      font-size: 12px;
+      font-size: 14px;
       line-height: 20px;
       font-weight: 300;
       color: #2c2c2c;
@@ -85,11 +86,11 @@
     .footer4 {
       margin-left: 20px;
       margin-top: 10px;
-      font-size: 37px;
+      font-size: 39px;
     }
     .footer5 {
       font-family: 'inter';
-      font-size: 10px;
+      font-size: 12px;
       margin-left: 20px;
       color: #2c2c2c;
       display: flex;
@@ -97,7 +98,7 @@
     }
     .footer51 {
       margin-top: 5px;
-      color: #2c2c2c;
+      color: rgb(168, 71, 2);
       font-size: 12px;
     }
     .footer6 {
@@ -108,7 +109,7 @@
     }
     
     .footer7 {
-      font-size: 10px;
+      font-size: 12px;
       color: #2c2c2c;
       display: flex;
       justify-content: center;

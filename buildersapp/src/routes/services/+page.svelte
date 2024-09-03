@@ -2,7 +2,10 @@
     import Footer from '$lib/footer.svelte';
     import Projectfiles from '$lib/projectfiles.svelte';
     import Header from '$lib/header.svelte';
+   
 </script><html lang="en"></html>
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,22 +37,27 @@
 
 
 
+    
 <style>
+   
+    
     .services{
-        height: 286px;
-        width: 360px;
+        height: 300px;
+        width: 100%;
+        max-width: 100vw;
         background-image: url('/services.jpeg');
         background-size: cover;
         display: flex;
         flex-direction: column;
         box-sizing: border-box;
+        margin:0;
         
         
         
     }
     .heading{
         letter-spacing: 1.4em;
-        font-size: 22px;
+        font-size: 24px;
         font-family:'Lexend Terra', sans-serif;
         color: #ffffff;
         padding: 9px;
@@ -60,9 +68,12 @@
     
     
     .heading3{
-        margin-top: 80px;
+        margin-top: 70px;
         margin-left: 10px;
-        font-size: 13px;
-        color: #ffffff;
+        font-size: 15px;
+        text-align: center;
+        font-family: "inter",serif;
+        color: rgb(0, 19, 19);
+        font-weight: 700;
     }
 </style>
