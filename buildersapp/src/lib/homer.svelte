@@ -51,6 +51,7 @@
       font-size: 30px;
       font-weight: 600;
       color: white;
+      margin-left: 23px;
     }
     .welcome {
       color: whitesmoke;

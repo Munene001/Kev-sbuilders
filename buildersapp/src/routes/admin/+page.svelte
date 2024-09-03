@@ -35,6 +35,7 @@
     }
   };
 </script>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,6 +45,7 @@
   
     
   </head>
+  <body>
   <Header/>
 <div class = "admin">
     <div class=" heading">Admin</div>
@@ -61,7 +63,12 @@
 </form>
 </div>
 <Footer/>
+</body>
 <style>
+    :global(body){
+    margin: 0;
+    padding: 0;
+  }
     .admin{
         width: 100%;
         max-width:100vw;
@@ -79,6 +86,7 @@
         margin-top: 2px;
         margin-bottom: 36px;
         letter-spacing: 0.8em;
+        margin-left: 8px;
 
     }
     

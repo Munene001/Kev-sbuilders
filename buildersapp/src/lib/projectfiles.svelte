@@ -56,8 +56,8 @@
 
     }
     .files3{
-        width: 311px;
-        height: 177px;
+        width: 328px;
+        height: 197px;
         margin-top: 30px;
         margin-left: 30px;
 
@@ -72,8 +72,8 @@
     .files4{
         margin-top: 30px;
         margin-left: 30px;
-        width: 311px;
-        height:177px;
+        width: 328px;
+        height:197px;
         object-fit: cover;
         
 

@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Terra&display=swap" rel="stylesheet">
     <title></title>
 </head>
-
+<body>
 <Header/>
     <div class = "services">
         <div class = "heading">SERVICES</div>
@@ -34,12 +34,16 @@
     Contact us to experience the artistry of our craftmanship." src = cabinetry1.jpeg src2 = cabinetry2.jpeg/>
     
     <Footer/>
+    </body>
 
 
 
     
 <style>
-   
+   :global(body){
+    margin: 0;
+    padding: 0;
+  }
     
     .services{
         height: 300px;
@@ -63,6 +67,7 @@
         padding: 9px;
         margin-top: 1px;
         font-weight: 400;
+        margin-left: 22px;
 
     }
     

@@ -64,7 +64,7 @@
     };
   });
 </script>
-
+<body>
 <Header />
 <div class="Home">
   <Homer/>
@@ -106,8 +106,13 @@
   </div>
 </div>
 <Footer />
+</body>
 
 <style>
+   :global(body){
+    margin: 0;
+    padding: 0;
+  }
   .Home {
     width: 100%;
     max-width:100vw;
@@ -144,7 +149,7 @@
     height: 238px;
     background-size: cover;
     margin-top: 10px;
-    margin-left: 12px;
+    margin-left: 17px;
     border-radius: 5px;
     position: relative;
   }
@@ -155,7 +160,7 @@
     background-size: cover;
     background-position: center;
     margin-top: 15px;
-    margin-left: 12px;
+    margin-left: 17px;
     border-radius: 5px;
     position: relative;
   }

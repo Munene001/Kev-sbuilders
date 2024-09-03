@@ -45,7 +45,7 @@
     rel="stylesheet"
   />
 </head>
-
+<body>
 <Header />
 <div class="about">
   <div class=" head">About</div>
@@ -73,7 +73,7 @@
                 src={team.imageUrl}
                 alt={team.caption}
               /></div>
-              <div class=" name">Name: {team.name}</div>
+              <div class=" name">{team.name}</div>
               <div class="caption">{team.caption}<div>
             </li>
           {/each}
@@ -89,8 +89,16 @@
   </div>
 </div>
 <Footer />
+</body>
 
 <style>
+  body{
+    
+    margin: 0;
+    padding: 0;
+
+  }
+  
   .about {
     width: 100%;
     max-width: 100vw;
@@ -99,7 +107,7 @@
     box-sizing: border-box;
     background-size: cover;
     flex-direction: column;
-    align-items: center;
+    
   }
   .head {
     font-family: "Lexend Terra", sans-serif;
@@ -109,12 +117,13 @@
     color: #ffffff;
     letter-spacing: 1em;
     font-weight: 400;
+    margin-left: 15px;
   }
   .body {
     display: flex;
     flex: 1;
     flex-direction: column;
-    margin-left: 35px;
+    margin-left: 50px;
     margin-top: 2px;
     width: 288px;
     min-height: 1266px;
@@ -130,7 +139,7 @@
     text-align: center;
   }
   .mid {
-    width: 300px;
+    width: 288px;
     height: 30px;
     background-color: black;
     color: #ffffff;
@@ -138,6 +147,7 @@
     justify-content: center;
     font-family: "Lexend Terra", serif;
     margin-top: 5px;
+    font-size: 22px;
   }
   .teamlist{
     list-style: none;
@@ -158,17 +168,24 @@
   }
   .name{
     display: flex;
-    font-size: 17px;
+    font-size: 15px;
     margin-bottom: 4px;
     margin-top: 3px;
     font-weight: bold;
     font-family: 'inter', serif;
+    text-align: center;
+    margin-left: 30px;
+    
 
   }
   .caption{
     font-family: 'inter', serif;
     color: #222;
     font-size: 15px;
+    text-align: center;
+    margin-right: 35px;
+   
+    
     
 
   }

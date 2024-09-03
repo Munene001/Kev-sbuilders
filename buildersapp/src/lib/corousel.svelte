@@ -110,13 +110,13 @@
     .link {
       position: absolute;
       width: 88px;
-      height: 34px;
+      height: 40px;
       background-color: black;
       color: white;
       font-size: 18px;
       font-family: "David Libre", serif;
       right: 132px;
-      bottom: 38px;
+      bottom: 23px;
       border-radius: 5px;
     }
     .g{

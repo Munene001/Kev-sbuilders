@@ -52,8 +52,8 @@
     rel="stylesheet"
   />
 </head>
-
-<Header />
+<body>
+<Header/>
 <div class="contact">
   <div class="uno">CONTACT</div>
   <div class="dos">Have a project in mind?</div>
@@ -74,7 +74,7 @@
       title="Engineer Town"
       src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6794.779693824633!2d36.57401400644805!3d-0.6056501291700614!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182902cd425fb409%3A0xa69392805474f81a!2sKinangop%20Police%20Station!5e1!3m2!1sen!2ske!4v1723826769817!5m2!1sen!2ske"
       width="330px"
-      height="403px"
+      height="483px"
       style="border:0;"
       loading="lazy"
       referrerpolicy="no-referrer-when-downgrade"
@@ -85,29 +85,29 @@
       <div>Name</div>
       <div class="form-group1">
         <div>
-          <label for="firstname">Firstname:</label><br><br>
+          <label for="firstname">Firstname:</label><br>
           <input type="text" id="firstname" name="firstname" bind:value={firstname} required />
         </div>
         <div>
-          <label for="lastname">Lastname:</label><br><br>
+          <label for="lastname">Lastname:</label><br>
           <input type="text" id="lastname" name="lastname" bind:value={lastname} required />
         </div>
       </div>
       <div class="form-group">
         <div>
-          <label for="email">Email:</label><br><br>
+          <label for="email">Email:</label><br>
           <input type="email" id="email" name="email" bind:value={email} required />
         </div>
       </div>
       <div class="form-group">
         <div>
-          <label for="phone">Phone Number:</label><br><br>
+          <label for="phone">Phone Number:</label><br>
           <input type="tel" id="phone" name="phone" bind:value={phonenumber} required />
         </div>
       </div>
       <div class="form-group">
         <div>
-          <label for="message">Message:</label><br><br>
+          <label for="message">Message:</label><br>
           <textarea id="message" name="message" rows="7" bind:value={message} required></textarea>
         </div>
       </div>
@@ -117,12 +117,19 @@
   </div>
 </div>
 <Footer />
+</body>
+
 
 <style>
+  :global(body){
+    margin: 0;
+    padding: 0;
+  }
   .contact {
     width: 100%;
     max-width:100vw;
-    height: 1235px;
+    height: 1265px;
+    max-height: 1315px;
     background-color: #b2ac88;
     box-sizing: border-box;
   }
@@ -133,8 +140,8 @@
     font-weight: 400;
     display: flex;
     justify-content: center;
-    margin-top: 1px;
     color: #ffffff;
+    margin-left: 20px;
   }
   .dos {
     font-weight: 300;
@@ -156,7 +163,7 @@
     font-weight: 500;
     display: flex;
     justify-content: center;
-    font-size: 16px;
+    font-size: 14px;
     font-family: "Inter";
     color: #383838;
     margin-top: 15px;
@@ -183,7 +190,7 @@
   }
   .seis {
     margin-top: 20px;
-    margin-left: 15px;
+    margin-left: 24px;
   }
   .form-container {
     color: black;
@@ -191,8 +198,8 @@
     letter-spacing: 0.2em;
     font-weight: 300;
     margin-top: 20px;
-    font-size: 12px;
-    margin-left: 15px;
+    font-size: 14px;
+    margin-left: 24px;
   }
   .form-group1 {
     display: flex;
@@ -202,6 +209,7 @@
   .form-group {
     margin-top: 7px;
   }
+
   input[type="text"],
   input[type="email"],
   input[type="tel"],
@@ -217,4 +225,9 @@
     padding: 5px;
     border-radius: 4px;
   }
+  label {
+  margin-bottom: 2px; /* Adjust the value as needed for the spacing */
+  display: block; /* Ensures the label occupies full width above the input */
+}
+
 </style>

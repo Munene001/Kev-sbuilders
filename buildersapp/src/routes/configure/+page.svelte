@@ -169,7 +169,7 @@
     rel="stylesheet"
   />
 </head>
-
+<body>
 <Header />
 
 <div class="configure">
@@ -367,8 +367,13 @@
     <p style="color: red;">{error}</p>
   {/if}
 </div>
+</body>
 
 <style>
+   :global(body){
+    margin: 0;
+    padding: 0;
+  }
   .configure {
     width: 100%;
     max-width: 100vw;

@@ -67,14 +67,11 @@
 
 
 <style>
-  .body{
-    margin:0;
-    padding:0;
-  }
+ 
   .header {
     width: 100%;
     max-width:100vw;
-    height: 137px;
+    height: 127px;
     background-color: #d9d9d9;
     padding: 15px;
     box-sizing: border-box;

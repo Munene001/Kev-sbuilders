@@ -42,6 +42,7 @@
     rel="stylesheet"
   />
 </head>
+<body>
 
 <Header />
 
@@ -73,8 +74,13 @@
 </div>
 
 <Footer />
+</body>
 
 <style>
+   :global(body){
+    margin: 0;
+    padding: 0;
+  }
   .uno1 {
     font-family: "Lexend Terra", sans-serif;
     letter-spacing: 1.0em;
