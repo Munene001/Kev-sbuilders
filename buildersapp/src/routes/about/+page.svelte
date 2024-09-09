@@ -123,7 +123,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    margin-left: 50px;
+    margin-left: 42px;
     margin-top: 2px;
     width: 288px;
     min-height: 1266px;
@@ -164,6 +164,7 @@
     height: 167px;
     border-radius: 50%;
     object-fit: cover;
+    
 
   }
   .name{
@@ -174,7 +175,7 @@
     font-weight: bold;
     font-family: 'inter', serif;
     text-align: center;
-    margin-left: 30px;
+    margin-left: 34px;
     
 
   }
@@ -183,7 +184,7 @@
     color: #222;
     font-size: 15px;
     text-align: center;
-    margin-right: 35px;
+    margin-right: 44px;
    
     
     

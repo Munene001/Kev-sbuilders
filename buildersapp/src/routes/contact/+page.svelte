@@ -141,7 +141,7 @@
     display: flex;
     justify-content: center;
     color: #ffffff;
-    margin-left: 20px;
+    margin-left: 25px;
   }
   .dos {
     font-weight: 300;

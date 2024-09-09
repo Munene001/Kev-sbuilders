@@ -36,7 +36,7 @@
       </div>
       <div class="footer7">
         <Icon icon="tabler:copyright" />Kev's interiors and builders<br />
-        kevokiach20@gmail.com|07360560|0720441236
+        kevokiach20@gmail.com|0712345678|0720441236
       </div>
     </div>
     

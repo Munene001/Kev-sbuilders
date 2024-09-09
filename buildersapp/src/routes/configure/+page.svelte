@@ -147,7 +147,7 @@
     projectCaption = "";
     projectStatus = "pending";
     projectImage = null;
-    projectType = "Remodelling";
+    projectType = "Flooring";
   }
 
   function resetTeamForm() {
@@ -218,8 +218,11 @@
       <label>
         Type:<br />
         <select bind:value={projectType}>
-          <option value="Remodelling">Remodelling</option>
+          <option value="Flooring">Flooring</option>
           <option value="General Construction">General Construction</option>
+          <option value="Fittings">Fittings</option>
+          <option value="Paint works">Paint works</option>
+          <option value="CCTV systems">CCTV systems</option>
         </select>
       </label>
     </div>
